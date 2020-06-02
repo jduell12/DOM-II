@@ -12,6 +12,9 @@
     * [ ] `dblclick`
      */
 
+//lets us know when the window has loaded
+window.addEventListener('load', event => console.log('window has loaded'));
+
 //gets the a links in the nav
 const homeLink = document.querySelector('.nav-link:nth-of-type(1)');
 const aboutLink = document.querySelector('.nav-link:nth-of-type(2)');
@@ -47,3 +50,35 @@ imgArray.forEach(function(item) {
         
     })
 })
+
+//get different areas in the document
+let contentDivs = document.getElementsByClassName('text-content');
+let imgDivs = document.getElementsByClassName('img-content');
+let destinationDiv = document.getElementsByClassName('content-destination');
+let desinationDivs = document.getElementsByClassName('destination');
+
+//put the content divs into an array
+contentDivsArray = Array.from(contentDivs);
+//add a mouse enter and mouseleave event for the content areas
+contentDivsArray.forEach(function(item){
+    item.addEventListener('mouseenter', function(event){
+        event.target.style.backgroundColor = '#FFEBCD';
+        event.target.style.color = '#17A2B8';
+    }), 
+    item.addEventListener('mouseleave', function(event){
+        event.target.style.backgroundColor = "white";
+        event.target.style.color = '#212529';
+    })
+});
+
+imgDivsArray = Array.from(imgDivs);
+
+imgDivsArray.forEach(function(item){
+    console.log(item);
+    item.addEventListener('dragstart', function(event){
+        event.target.style.opacity = '.5';
+    }, false);
+    item.addEventListener('dragend', event => event.target.style.opacity = '1');
+});
+
+desintationDivsArray = Array.from(desinationDivs);
