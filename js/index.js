@@ -13,10 +13,10 @@
      */
 
 //gets the a links in the nav
-let homeLink = document.querySelector('.nav-link:nth-of-type(1)');
-let aboutLink = document.querySelector('.nav-link:nth-of-type(2)');
-let blogLink = document.querySelector('.nav-link:nth-of-type(3)');
-let contactLink = document.querySelector('.nav-link:nth-of-type(4)');
+const homeLink = document.querySelector('.nav-link:nth-of-type(1)');
+const aboutLink = document.querySelector('.nav-link:nth-of-type(2)');
+const blogLink = document.querySelector('.nav-link:nth-of-type(3)');
+const contactLink = document.querySelector('.nav-link:nth-of-type(4)');
 
 //add mouseover events on a links
 let linkArray = [homeLink, aboutLink, blogLink, contactLink];
@@ -30,3 +30,20 @@ linkArray.forEach(item => item.addEventListener('mouseleave', event => {
     event.target.style.color = '#212529';
     event.target.style.fontSize = '1.6rem';
 }));
+
+//gets image elements
+const imgs = document.getElementsByTagName('img');
+imgArray = Array.from(imgs);
+
+//add double click events on the imgs 
+imgArray.forEach(function(item) {
+    item.addEventListener('dblclick', function(event){
+        if(event.currentTarget.style.transform !== 'scale(1.5)')
+        {
+            event.target.style.transform = 'scale(1.5)';
+        } else {
+            event.target.style.transform = 'none';
+        }
+        
+    })
+})
