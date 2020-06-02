@@ -117,11 +117,7 @@ buttons.forEach(item => item.addEventListener('click', function(event){
 
 //changes the font size when the destiation header is clicked once
 let destinationDivs = document.querySelectorAll('.destination');
-
-destinationDivs.forEach(item => item.addEventListener('click', function(event){
-    console.log('target', event.target);
-    console.log('current target', event.currentTarget);
-    
+destinationDivs.forEach(item => item.addEventListener('click', function(event){    
     if(event.target.style.backgroundColor !== 'blue'){
         event.target.style.backgroundColor = 'blue';
         event.target.style.color = 'white';
@@ -131,3 +127,11 @@ destinationDivs.forEach(item => item.addEventListener('click', function(event){
     }
 }));
 
+//alert when someone tries to copy something
+document.body.addEventListener('copy', function(event){
+    if(event.target.style.color !== 'purple'){
+        event.target.style.color = 'purple';
+    } else {
+        event.target.style.color = '#212529';
+    }
+})
