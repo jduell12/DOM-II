@@ -34,6 +34,11 @@ linkArray.forEach(item => item.addEventListener('mouseleave', event => {
     event.target.style.fontSize = '1.6rem';
 }));
 
+//prevents refreshing the page when clicking on a navigation item
+linkArray.forEach(item => item.addEventListener('click', function(event){
+    event.preventDefault();
+}))
+
 //gets image elements
 const imgs = document.getElementsByTagName('img');
 imgArray = Array.from(imgs);
@@ -77,7 +82,7 @@ imgDivsArray.forEach(function(item){
     item.addEventListener('dragend', event => event.target.style.opacity = '1');
 });
 
-//log to the console words in paragraphs user selects 
+//change color of background and text when pressing keys down and when releasing the keys 
 let paras = document.getElementsByTagName('p');
 pArray = Array.from(paras);
 
@@ -94,3 +99,35 @@ document.addEventListener('keyup', function(event){
         item.style.color = '#212529';
     })
 })
+
+//changes the button's color when you click a button 
+let buttons = document.querySelectorAll('.btn');
+buttons.forEach(item => item.addEventListener('click', function(event){
+    if(event.target.style.backgroundColor !== 'blue'){
+        event.target.style.backgroundColor = 'blue';
+        event.target.style.color = '#FFEBCD';
+        event.stopPropagation();
+    } else {
+        event.target.style.backgroundColor = '#17A2B8';
+        event.target.style.color = 'white';
+       event.stopPropagation();
+    }
+    
+}));
+
+//changes the font size when the destiation header is clicked once
+let destinationDivs = document.querySelectorAll('.destination');
+
+destinationDivs.forEach(item => item.addEventListener('click', function(event){
+    console.log('target', event.target);
+    console.log('current target', event.currentTarget);
+    
+    if(event.target.style.backgroundColor !== 'blue'){
+        event.target.style.backgroundColor = 'blue';
+        event.target.style.color = 'white';
+    } else {
+        event.target.style.backgroundColor = 'white';
+        event.target.style.color = 'black';
+    }
+}));
+
