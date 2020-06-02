@@ -51,12 +51,8 @@ imgArray.forEach(function(item) {
     })
 })
 
-//get different areas in the document
+//get middle content areas 
 let contentDivs = document.getElementsByClassName('text-content');
-let imgDivs = document.getElementsByClassName('img-content');
-let destinationDiv = document.getElementsByClassName('content-destination');
-let desinationDivs = document.getElementsByClassName('destination');
-
 //put the content divs into an array
 contentDivsArray = Array.from(contentDivs);
 //add a mouse enter and mouseleave event for the content areas
@@ -71,14 +67,30 @@ contentDivsArray.forEach(function(item){
     })
 });
 
+//add drag event to imgs in the middle section
+let imgDivs = document.getElementsByClassName('img-content');
 imgDivsArray = Array.from(imgDivs);
-
 imgDivsArray.forEach(function(item){
-    console.log(item);
     item.addEventListener('dragstart', function(event){
         event.target.style.opacity = '.5';
     }, false);
     item.addEventListener('dragend', event => event.target.style.opacity = '1');
 });
 
-desintationDivsArray = Array.from(desinationDivs);
+//log to the console words in paragraphs user selects 
+let paras = document.getElementsByTagName('p');
+pArray = Array.from(paras);
+
+document.addEventListener('keydown', function(event){
+    pArray.forEach(function(item){
+        item.style.backgroundColor = '#FFEBCD';
+        item.style.color = '#17A2B8';
+    })
+});
+
+document.addEventListener('keyup', function(event){
+    pArray.forEach(function(item){
+        item.style.backgroundColor = 'white';
+        item.style.color = '#212529';
+    })
+})
