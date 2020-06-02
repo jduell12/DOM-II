@@ -1,15 +1,14 @@
-// Your code goes here
-/*[ ] Using your [index.js file](js/index.js), create 10 [unique event listeners](https://developer.mozilla.org/en-US/docs/Web/Events). using your creativity to make the Fun Bus site more interactive.  Here are some unique events you could try to use: 
-	* [ ] `mouseover`
-	* [ ] `keydown`
-	* [ ] `wheel`
-	* [ ] `drag / drop`
-	* [ ] `load`
-	* [ ] `focus`
-	* [ ] `resize`
-	* [ ] `scroll`
-	* [ ] `select`
-    * [ ] `dblclick`
+/*[ ] Using your [index.js file](js/index.js), create 10 [unique event listeners](https://developer.mozilla.org/en-US/docs/Web/Events). using your creativity to make the Fun Bus site more interactive.  Unique events used:
+    * mouseover
+    * mouseleave
+    * keydown
+    * keyup
+    * click
+    * drag
+    * load
+    * copy
+    * dblclick
+    * mousedown
      */
 
 //lets us know when the window has loaded
@@ -135,3 +134,26 @@ document.body.addEventListener('copy', function(event){
         event.target.style.color = '#212529';
     }
 })
+
+//when you drop an image somewhere it alerts 
+document.addEventListener('drop', function(event){
+    event.preventDefault();
+    alert("You can't change the page");
+},false)
+
+//changes color of headers when pressing mouse down and then reverts back once mouse is released
+let title = document.querySelector('h1');
+let heading = document.querySelector('h2');
+let titleArray = [title, heading];
+
+titleArray.forEach(function(item){
+    item.addEventListener('mousedown', function(event){
+        event.target.style.backgroundColor = '#C0C0C0';
+        event.target.style.color = '#17A2B8';
+    });
+    item.addEventListener('mouseup', function(event){
+        event.target.style.backgroundColor = 'white';
+        event.target.style.color = '#212529';
+    })
+});
+
