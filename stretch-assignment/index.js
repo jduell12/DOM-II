@@ -28,5 +28,6 @@ boxArray.forEach(item => item.addEventListener('mousedown', function(event){
     }
     body.addEventListener('mouseup', function(){
         clearInterval(timer);
+        item.style.marginLeft = '10px';
     });
 }))
